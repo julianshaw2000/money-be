@@ -1,0 +1,6 @@
+@money_be_HostAddress = http://localhost:5073
+
+GET {{money_be_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
