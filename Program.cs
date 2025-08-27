@@ -32,7 +32,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(o => o.SerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter()));
-builder.Services.AddCors(o => o.AddPolicy("spa", p => p.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
+builder.Services.AddCors(o => o.AddPolicy("ng", p => p.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
+builder.Services.AddHttpClient<money_be.Services.NowPaymentsClient>();
 
 var app = builder.Build();
 
@@ -41,7 +42,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors("spa");
+app.UseCors("ng");
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
